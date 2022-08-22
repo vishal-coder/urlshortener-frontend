@@ -4,6 +4,14 @@
   width: 100vw;
 }
 
+html,
+body {
+  height: 100vh;
+  width: 100vw;
+  margin: 0px;
+  padding: 0px;
+}
+
 #root {
   text-align: center;
   height: 100vh;
@@ -20,13 +28,13 @@
 }
 
 .regform {
-  margin: 20px;
+  margin: 15px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-content: center;
   align-items: center;
-  gap: 20px;
+  gap: 15px;
   width: 500px;
 }
 
@@ -34,6 +42,9 @@
   color: red;
 }
 
+.signuptitle {
+  margin: 2px;
+}
 .loginPaper {
   position: absolute;
   height: auto;
@@ -45,13 +56,13 @@
 }
 
 .loginForm {
-  margin: 20px;
+  margin: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-content: center;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
   width: 500px;
 }
 
@@ -90,4 +101,32 @@
 .successResponse {
   padding: 20px;
   background-color: #caf9c4;
+}
+
+.success {
+  color: green;
+  padding: 20px;
+  background-color: #caf9c4;
+  border-radius: 5px;
+}
+
+.createNewLinkPaper {
+  position: absolute;
+  height: auto;
+  left: 60%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  border-radius: 15px;
+}
+
+.createNewLinkForm {
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 500px;
 }

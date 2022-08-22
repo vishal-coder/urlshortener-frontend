@@ -57,9 +57,9 @@ function Register() {
   return (
     <Paper elevation={3} className="regPaper">
       {!isregistered ? (
-        <>
+        <div>
           <form className="regform" onSubmit={handleSubmit}>
-            <h1>Sign up for free</h1>
+            <h2 className="signuptitle">Sign up for free</h2>
             {touched.firstName && errors.firstName ? (
               <div className="error">{errors.firstName}</div>
             ) : (
@@ -124,7 +124,7 @@ function Register() {
               Register
             </Button>
           </form>
-        </>
+        </div>
       ) : (
         <div className="successResponse">
           <h2>User Registered Successfully</h2>

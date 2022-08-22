@@ -1,0 +1,60 @@
+.dashboardOverview {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  overflow: auto;
+}
+
+.widgetwrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  width: 100%;
+  justify-content: space-around;
+  flex: 1;
+  flex-wrap: wrap;
+  overflow: auto;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  /* background-color: pink; */
+}
+
+.widgetwrapper :nth-child(3) {
+  /* flex: 0.5; */
+  flex-grow: 0.5;
+}
+
+.widget {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 8rem;
+  width: 10rem;
+  border-radius: 10px;
+  padding: 10px;
+  -webkit-box-shadow: -1px -1px 13px 5px rgba(176, 176, 176, 1);
+  -moz-box-shadow: -1px -1px 13px 5px rgba(176, 176, 176, 1);
+  box-shadow: -1px -1px 13px 5px rgba(176, 176, 176, 1);
+}
+
+.widgetTitle {
+  font-size: larger;
+  color: rgb(128, 128, 128);
+}
+
+.widgetBody {
+  overflow: auto;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+.chartWrapper {
+  background-color: red;
+  min-height: 20rem;
+  height: 400px;
+  display: flex;
+  flex-shrink: 3;
+  flex-wrap: wrap;
+  overflow: auto;
+}

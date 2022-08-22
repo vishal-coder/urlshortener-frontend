@@ -9,16 +9,16 @@ import { formik, useFormik } from "formik";
 import { handleLogin } from "../auth/auth.js";
 import { useNavigate, useLocation } from "react-router-dom";
 import { UserContext } from "../Context/UserContext.js";
-function Login() {
+function CreateNewLink() {
   const location = useLocation();
 
   const navigate = useNavigate();
   const { login } = useContext(UserContext);
   const userValidation = yup.object({
-    username: string().email().required(),
-    password: string().required().min(6),
+    url: string().url(),
   });
 
+  const handleReset = () => {};
   const {
     formik,
     values,
@@ -28,67 +28,54 @@ function Login() {
     errors,
     touched,
     setFieldError,
+    onReset,
+    resetForm,
   } = useFormik({
-    initialValues: { username: "", password: "" },
+    initialValues: { url: "" },
     validationSchema: userValidation,
+    onReset: handleReset,
     onSubmit: async (values) => {
+      alert("on sbubit");
       const data = await handleLogin(values);
-      console.log("login data is", data);
+
       if (data.token) {
         let from = location.state?.from?.pathname || "/dashboard";
         localStorage.setItem("user", JSON.stringify(data.token));
-        login(data.user, data.token); // change 'myUser' to actual username
         navigate(from, { replace: true });
+
+        login(data.username, data.token); // change 'myUser' to actual username
       } else {
         setFieldError("username", data.message);
       }
     },
   });
   return (
-    <Paper elevation={3} className="loginPaper">
-      <form action="" className="loginForm" onSubmit={handleSubmit}>
-        <h1>Enter your login details</h1>
-        {touched.username && errors.username ? (
-          <div className="error">{errors.username}</div>
+    <Paper elevation={3} className="createNewLinkPaper">
+      <form action="" className="createNewLinkForm" onSubmit={handleSubmit}>
+        <h2>Enter your link</h2>
+        {touched.url && errors.url ? (
+          <div className="error">{errors.url}</div>
         ) : (
           ""
         )}
         <TextField
           fullWidth
-          id="username-id"
-          name="username"
-          label="username"
+          id="url-id"
+          name="url"
+          label="url"
           variant="outlined"
-          value={values.username}
+          value={values.url}
           onChange={handleChange}
           onBlur={handleBlur}
         />
-        {touched.password && errors.password ? (
-          <div className="error">{errors.password}</div>
-        ) : (
-          ""
-        )}
-        <TextField
-          fullWidth
-          id="password-id"
-          name="password"
-          type="password"
-          label="password"
-          variant="outlined"
-          value={values.fullName}
-          onChange={handleChange}
-          onBlur={handleBlur}
-        />
+
         <div className="loginbtn-grp">
           <Button variant="contained" type="submit" size="large">
             Login
           </Button>
-          <Button
-            size="small"
-            variant="outlined"
-            onClick={() => navigate("/forgotpassword")}
-          >
-            forgot Password
+
+          <Button type="reset" onClick={resetForm} variant="outlined">
+            Reset
           </Button>
         </div>
       </form>
@@ -96,4 +83,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default CreateNewLink;
