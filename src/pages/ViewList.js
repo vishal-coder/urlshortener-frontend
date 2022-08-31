@@ -1,8 +1,8 @@
+import { DataGrid } from "@mui/x-data-grid";
 import * as React from "react";
-import { DataGrid, GridCellParams } from "@mui/x-data-grid";
 import { UserContext } from "../Context/UserContext";
-import clsx from "clsx";
 import LoadingSpinner from "./LoadingSpinner.js";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const columns = [
   { field: "id", headerName: "ID", hide: true, flex: 1 },
@@ -36,6 +36,8 @@ export default function ViewList() {
   const [spinner, setSpinner] = React.useState(false);
   const [rowData, setRowData] = React.useState([]);
   const { user } = React.useContext(UserContext);
+  const navigate = useNavigate();
+
   React.useEffect(() => {
     HandleViewList(user.name);
   }, []);
@@ -43,6 +45,8 @@ export default function ViewList() {
   const HandleViewList = async (userName) => {
     setSpinner(true);
     console.log("HandleViewList", userName);
+    const token = localStorage.getItem("token");
+
     const response = await fetch(
       `${process.env.REACT_APP_API}/shortner/getAllURLS`,
       {
@@ -50,6 +54,7 @@ export default function ViewList() {
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
+          "x-auth-token": token,
         },
         body: JSON.stringify({ username: userName }),
       }
@@ -62,6 +67,11 @@ export default function ViewList() {
       setRowData(respnseData.data);
       console.log("success - data", respnseData);
     } else {
+      if (response.status == 401) {
+        navigate("/login", { replace: true });
+        // alert("access denied");
+        return;
+      }
       alert("Invalid Token..Try  again");
     }
   };

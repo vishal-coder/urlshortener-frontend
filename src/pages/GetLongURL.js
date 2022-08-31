@@ -12,6 +12,8 @@ function GetLongURL() {
   }, []);
 
   const HandleGetLongURL = async (shortCode) => {
+    const token = localStorage.getItem("token");
+
     const response = await fetch(
       `${process.env.REACT_APP_API}/shortner/${shortCode}`,
       {
@@ -19,6 +21,7 @@ function GetLongURL() {
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
+          "x-auth-token": token,
         },
       }
     );

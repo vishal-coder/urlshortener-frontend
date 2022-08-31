@@ -13,6 +13,7 @@ function DashboardOverview() {
           <Widgets key="2" type="/widget/totaClicks" />
           <Widgets key="3" type="/widget/mostPopular" />
         </div>
+        <hr />
         <div className="chartWrapper">
           {/* <div> */}
           <DailyLinkChart />

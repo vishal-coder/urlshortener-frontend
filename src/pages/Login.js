@@ -35,8 +35,8 @@ function Login() {
       const data = await handleLogin(values);
       console.log("login data is", data);
       if (data.token) {
-        let from = location.state?.from?.pathname || "/dashboard";
-        localStorage.setItem("user", JSON.stringify(data.token));
+        let from = location.state?.from?.pathname || "/dashboard/overview";
+        localStorage.setItem("token", data.token);
         login(data.user, data.token); // change 'myUser' to actual username
         navigate(from, { replace: true });
       } else {

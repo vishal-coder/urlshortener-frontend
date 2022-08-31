@@ -50,7 +50,6 @@
 }
 
 .chartWrapper {
-  background-color: red;
   min-height: 20rem;
   height: 400px;
   display: flex;
