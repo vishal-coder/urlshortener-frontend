@@ -7,7 +7,7 @@ function DashboardOverview() {
   return (
     <div>
       <div className="dashboardOverview">
-        <h1>Dashboard Overview</h1>
+        <h3>Dashboard Overview</h3>
         <div className="widgetwrapper">
           <Widgets flex={1} key="1" type="/widget/totalLinks" />
           <Widgets key="2" type="/widget/totaClicks" />

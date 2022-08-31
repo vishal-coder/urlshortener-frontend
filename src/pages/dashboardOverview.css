@@ -3,6 +3,7 @@
   flex-direction: column;
   flex-wrap: wrap;
   overflow: auto;
+  max-height: 100vh;
 }
 
 .widgetwrapper {
@@ -16,6 +17,7 @@
   overflow: auto;
   padding-top: 10px;
   padding-bottom: 10px;
+  max-height: 20vh;
   /* background-color: pink; */
 }
 
@@ -29,7 +31,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  height: 8rem;
+  height: 5rem;
   width: 10rem;
   border-radius: 10px;
   padding: 10px;
@@ -56,4 +58,10 @@
   flex-shrink: 3;
   flex-wrap: wrap;
   overflow: auto;
+}
+
+@media only screen and (max-height: 1500px) {
+  .dashboardOverview {
+    max-height: 92vh;
+  }
 }

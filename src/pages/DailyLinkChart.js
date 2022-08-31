@@ -42,14 +42,11 @@ function DailyLinkChart() {
     );
 
     const responseData = await response.json();
-    console.log("response  in chart is", responseData.data);
     let chartData = responseData.data;
     chartData.forEach((o, i) => (o.id = i + 1));
-    console.log("response  in chartData is", chartData);
     setSpinner(false);
     if (responseData.success) {
       setRowData(responseData.data);
-      console.log("success - data", responseData);
     } else {
       if (response.status == 401) {
         navigate("/login", { replace: true });
@@ -71,8 +68,7 @@ function DailyLinkChart() {
       }}
     >
       {/* <div style={{ height: 400, width: "100%" }}> */}
-      <h2>Day wise data</h2>
-      <br />
+      <h2 sx={{ padding: "0px" }}>Day wise data</h2>
       {!spinner ? (
         <div style={{ flexGrow: 1 }}>
           <DataGrid
